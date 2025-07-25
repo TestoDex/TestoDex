@@ -65,18 +65,21 @@ const ethers = {
   }
 };
 
+// Import contract addresses
+import { CONTRACT_ADDRESSES, NETWORK_CONFIG } from '../config/contracts.js';
+
 // Network configuration for Sonic
-export const NETWORK_CONFIG = {
-  chainId: 146,
-  chainName: 'Sonic',
-  nativeCurrency: {
-    name: 'Sonic',
-    symbol: 'S',
-    decimals: 18,
-  },
-  rpcUrls: ['https://rpc.soniclabs.com'],
-  blockExplorerUrls: ['https://sonicscan.org'],
-};
+// export const NETWORK_CONFIG = {
+//   chainId: 146,
+//   chainName: 'Sonic',
+//   nativeCurrency: {
+//     name: 'Sonic',
+//     symbol: 'S',
+//     decimals: 18,
+//   },
+//   rpcUrls: ['https://rpc.soniclabs.com'],
+//   blockExplorerUrls: ['https://sonicscan.org'],
+// };
 
 // Contract ABIs (minimal for basic operations)
 export const CONTRACT_ABIS = {
@@ -157,16 +160,19 @@ export async function connectWallet() {
 }
 
 // Initialize contracts with addresses
-export function initializeContracts(addresses) {
+export function initializeContracts(addresses = null) {
   try {
+    // Use provided addresses or default to CONTRACT_ADDRESSES
+    const contractAddresses = addresses || CONTRACT_ADDRESSES;
+    
     contracts = {
-      TestoToken: new ethers.Contract(addresses.TestoToken, CONTRACT_ABIS.ERC20, signer),
-      TSonicToken: new ethers.Contract(addresses.TSonicToken, CONTRACT_ABIS.ERC20, signer),
-      Router: new ethers.Contract(addresses.TestodexRouter, CONTRACT_ABIS.Router, signer),
-      Staking: new ethers.Contract(addresses.TestodexStaking, CONTRACT_ABIS.Staking, signer),
-      Farming: new ethers.Contract(addresses.TestodexFarming, CONTRACT_ABIS.Farming, signer),
+      TestoToken: new ethers.Contract(contractAddresses.TestoToken, CONTRACT_ABIS.ERC20, signer),
+      TSonicToken: new ethers.Contract(contractAddresses.TSonicToken, CONTRACT_ABIS.ERC20, signer),
+      Router: new ethers.Contract(contractAddresses.TestodexRouter, CONTRACT_ABIS.Router, signer),
+      Staking: new ethers.Contract(contractAddresses.TestodexStaking, CONTRACT_ABIS.Staking, signer),
+      Farming: new ethers.Contract(contractAddresses.TestodexFarming, CONTRACT_ABIS.Farming, signer),
     };
-    console.log('Contracts initialized successfully');
+    console.log('Contracts initialized successfully with addresses:', contractAddresses);
   } catch (error) {
     console.error('Contract initialization error:', error);
     throw error;

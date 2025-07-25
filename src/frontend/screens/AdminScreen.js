@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-nati
 import ContractAddressConfig from '../components/ContractAddressConfig';
 import PoolManager from '../components/PoolManager';
 import TokenMinter from '../components/TokenMinter';
+import { CONTRACT_ADDRESSES } from '../config/contracts.js';
 
 // Admin panel tabs
 const ADMIN_TABS = [
@@ -12,16 +13,8 @@ const ADMIN_TABS = [
   { id: 'minting', title: 'Token Minting', emoji: '🪙' },
 ];
 
-// Initial contract address keys
-const defaultAddresses = {
-  TestoToken: '',
-  TSonicToken: '',
-  TestodexTreasury: '',
-  TestodexFactory: '',
-  TestodexRouter: '',
-  TestodexStaking: '',
-  TestodexFarming: '',
-};
+// Initial contract address keys - use deployed addresses
+const defaultAddresses = CONTRACT_ADDRESSES;
 
 // Main Admin Panel Screen
 export default function AdminScreen() {

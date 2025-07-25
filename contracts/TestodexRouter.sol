@@ -43,10 +43,10 @@ contract TestodexRouter {
     }
 
     // Swap exact tokens for tokens (single pair, simplified)
-    function swapExactTokensForTokens(address tokenIn, address tokenOut, uint amountIn, uint amountOutMin, address to) external {
+    function swapExactTokensForTokens(address tokenIn, address tokenOut, uint amountIn, uint /* amountOutMin */, address to) external {
         address pair = ITestodexFactory(factory).getPair(tokenIn, tokenOut);
         require(pair != address(0), "Pair not found");
-        (address token0, address token1) = tokenIn < tokenOut ? (tokenIn, tokenOut) : (tokenOut, tokenIn);
+        (address token0, ) = tokenIn < tokenOut ? (tokenIn, tokenOut) : (tokenOut, tokenIn);
         (uint amount0Out, uint amount1Out) = tokenIn == token0 ? (uint(0), amountIn) : (amountIn, uint(0));
         IERC20(tokenIn).transferFrom(msg.sender, pair, amountIn);
         ITestodexPair(pair).swap(amount0Out, amount1Out, to);
