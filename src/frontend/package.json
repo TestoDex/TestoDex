@@ -9,7 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "expo build",
-    "build:web": "expo build:web",
+    "build:web": "npx expo export:web",
     "eject": "expo eject",
     "test": "jest",
     "lint": "eslint .",
