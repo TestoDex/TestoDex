@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "TestoDex",
+    "slug": "testodex",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#7e3ff2"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.testodex.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#7e3ff2"
+      },
+      "package": "com.testodex.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "webpack",
+      "output": "static",
+      "build": {
+        "babel": {
+          "include": [
+            "**/*.js",
+            "**/*.jsx",
+            "**/*.ts",
+            "**/*.tsx"
+          ]
+        }
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "testodex",
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    },
+    "owner": "testodex",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/your-project-id"
+    }
+  }
+}
