@@ -1,6 +1,6 @@
 [build]
   base = "src/frontend"
-  command = "npm run build:web"
+  command = "npm install && npm run build:web"
   publish = "web-build"
 
 [build.environment]
