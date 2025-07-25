@@ -1,7 +1,7 @@
 [build]
   base = "src/frontend"
   command = "npm install && npm run build:web"
-  publish = "dist"
+  publish = "web-build"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -15,4 +15,4 @@
 [dev]
   command = "npm start"
   port = 8080
-  publish = "dist" 
+  publish = "web-build" 
