@@ -1,0 +1,18 @@
+[build]
+  base = "src/frontend"
+  command = "npm run build:web"
+  publish = "web-build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "npm start"
+  port = 8080
+  publish = "web-build" 
